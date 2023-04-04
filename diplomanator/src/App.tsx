@@ -97,7 +97,7 @@ function App() {
                   <input
                     className="input is-medium"
                     type="text"
-                    placeholder="Enter your wallet address (0x...)"
+                    placeholder="Diploma ID, e.g. 0x1234"
                   />
                 </div>
                 <div className="column">
