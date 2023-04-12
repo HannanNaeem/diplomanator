@@ -3,14 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Web3ReactProvider } from '@web3-react/core';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+function getLibrary(provider: any) {
+  console.log("Getting provider");
+  var Web3 = require('web3');
+  return new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+}
+
 root.render(
   <React.StrictMode>
+    <Web3ReactProvider getLibrary={getLibrary}> 
       <App />
+    </Web3ReactProvider>
   </React.StrictMode>
 );
 
