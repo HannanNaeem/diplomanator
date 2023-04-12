@@ -1,24 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import "bulma/css/bulma.min.css";
-import './index.css';
-import App from './App';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Application from './application';
 import reportWebVitals from './reportWebVitals';
-import Web3 from 'web3';
+import "bootstrap/dist/css/bootstrap.min.css"
+import { MetaMaskInpageProvider } from "@metamask/providers"
 
-declare global {
-  interface Window {
-    ethereum: any;
+
+declare global{
+    interface Window{
+      ethereum?:MetaMaskInpageProvider
+    }
   }
-} 
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <BrowserRouter>
+      <Application />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
