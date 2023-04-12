@@ -14,6 +14,7 @@ function App() {
   const { active, account, library, activate, deactivate } = useWeb3React()
   
   // minting toggle listener
+  // const [minting, setMinting] = useState(false);
   let minting = false;
 
   // Function to connect to wallet
@@ -56,7 +57,8 @@ function App() {
         alert(`Something went wrong! Try switching accounts - ${e}`);
         console.log("ERROR ->", e);
       } 
-      minting = true;
+      // setMinting(false);
+      minting = false;
       
     });
   }
