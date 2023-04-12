@@ -3,6 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "./wallet/Connect";
 import {useState} from "react";
 import web3 from 'web3';
+import abi from './contract_abis/MyToken.json'
 
 function App() {
 
@@ -37,18 +38,22 @@ function App() {
 
     // setMinting(true);
     minting = true;
-    const myAccount = "";
-    const price = "0.01";
+    const myAccount = "0x096F56C92c2c173CC7CaBa35C6a53CF3b97f9892";
+    const contactAdd = "0xc02d178467118443B4c26BC33fd1D3D05cfF657C"
 
     let obj = {
       to : myAccount,
-      from: account,
-      value: web3.utils.toWei(price, "ether"),
+      from: myAccount,
+      value: 100,
       gas: 85000,
       gasLimit: "100000"
     };
 
-    await library.eth.sendTransaction(obj, async (e : any, tx : any) => {
+    var contract = new library.eth.Contract(abi['abi'], contactAdd, {
+      from: myAccount, // default from address
+    });
+
+    await contract.methods.mint.sendTransation(myAccount, 100, async (e : any, tx : any) => {
 
       if (e) {
         alert(`Something went wrong! Try switching accounts - ${e}`);
@@ -57,8 +62,9 @@ function App() {
       minting = false;
       // setMinting(false);
 
-      
     });
+
+
   }
 
  

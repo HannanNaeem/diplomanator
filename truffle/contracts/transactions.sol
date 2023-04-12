@@ -14,14 +14,14 @@ contract RecordAdder is Ownable {
 
     event recordAdded(
         string indexed dipID, 
-        string ptr
+        uint ptr
     );
 
-    function addRecord(string dipID) public onlyOwner{
+    function addRecord(string memory dipID) public onlyOwner{
         emit recordAdded(dipID, _generateUPtr(dipID));
     }
 
-    function _generateUPtr(string dipID) private returns(string ptr){
+    function _generateUPtr(string memory dipID) private returns(uint ptr){
         curr_id = curr_id + 1;
         return curr_id;
     }
