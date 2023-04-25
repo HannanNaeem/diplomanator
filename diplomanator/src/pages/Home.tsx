@@ -6,10 +6,11 @@ import { injected } from "../wallet/Connect";
 import abi from '../contract_abis/MyToken.json'
 import {useNavigate} from "react-router-dom";
 
+
 const Home =() => {
   
   // Main Banner Image
-  const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
+  const contactAdd = "0xb8401841Dc81a8Bb25D35F6F5C153cC1C802b8e0";
   const mainBgImage = "https://www.commonapp.org/static/aed6289d277c112ece5a609eff45ae9c/university-texas-austin_1171.jpg";
   const addRecImage = "https://wallpapercave.com/wp/wp2337008.jpg";
   const verifyImage = "https://assets.teenvogue.com/photos/5e66a34f7ac2c30008a4819d/16:9/w_2560%2Cc_limit/GettyImages-1062799214.jpg";
@@ -156,6 +157,13 @@ const Home =() => {
         <button onClick={()=> {navigate("./pages/AddRecord")}} className="function-card-wrapper" style={{ backgroundImage: `url(${addRecImage})` }}>
           <div className="function-card__inner-wrapper">
             <h1 className="function-txt"> Add records</h1>
+
+          </div>
+        </button>
+          
+        <button onClick={()=> {navigate("../pages/BrowseBC")}} className="function-card-wrapper" style={{ backgroundImage: `url(${addRecImage})` }}>
+          <div className="function-card__inner-wrapper">
+            <h1 className="function-txt"> Browse Records</h1>
 
           </div>
         </button>

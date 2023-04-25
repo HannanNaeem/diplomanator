@@ -8,6 +8,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import  Verify  from "./pages/Verify";
 import Home from './pages/Home';
 import AddRecord from './pages/AddRecord';
+import BrowseBC from './pages/BrowseBC';
 
 function App() {
   
@@ -126,6 +127,7 @@ function App() {
         <Route  path = "/" element={<Home/>}/>
         <Route  path = "/pages/Verify" element={<Verify/>}/>
         <Route  path = "/pages/AddRecord" element={<AddRecord/>}/>
+        <Route  path = "/pages/BrowseBC" element={<BrowseBC/>}/>
       </Routes>
     </BrowserRouter>
     </>
