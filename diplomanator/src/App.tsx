@@ -9,6 +9,7 @@ import  Verify  from "./pages/Verify";
 import Home from './pages/Home';
 import AddRecord from './pages/AddRecord';
 
+
 function App() {
   
   // // Main Banner Image

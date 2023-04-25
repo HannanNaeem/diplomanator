@@ -63,6 +63,25 @@
 }
 
 
+.pageHead-txt{
+  color: #000000;
+  font-size: 4em;
+  min-width: 320px;
+  max-width: 500px;
+  line-height: 1em;
+  background:#f1ba8a;
+  width:fit-content;
+  background-position: center;
+  border-radius: 10px;
+  margin: 0px;
+  font-weight:100;
+  line-height: 2em;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+}
+
 
 .header-txt {
   color: #a28054;
