@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 const Home =() => {
   
   // Main Banner Image
-  const contactAdd = "0xb8401841Dc81a8Bb25D35F6F5C153cC1C802b8e0";
+  const contactAdd = "0xa3EB4D4888d18B318E859D6b733dF5D57fA5d3df";
   const mainBgImage = "https://www.commonapp.org/static/aed6289d277c112ece5a609eff45ae9c/university-texas-austin_1171.jpg";
   const addRecImage = "https://wallpapercave.com/wp/wp2337008.jpg";
   const verifyImage = "https://assets.teenvogue.com/photos/5e66a34f7ac2c30008a4819d/16:9/w_2560%2Cc_limit/GettyImages-1062799214.jpg";

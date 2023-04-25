@@ -17,13 +17,9 @@ import Card from 'react-bootstrap/Card';
 
 export default function AddForm() {
 
-    const [fname, setFName] = useState("");
-    const [lname, setLName] = useState("");
+
     const [dipID, setdipID] = useState("");
-    const [school, setSchool] = useState("");
-    const [major, setMajor] = useState("");
-    const [gmonth, setMonth] = useState("");
-    const [gyear, setYear] = useState("");
+
     const [myAccount , setMyAccount] = useState("");
     const [matched, setMatched] = useState(false);
     const [hash, setHash] = useState("");
@@ -100,15 +96,11 @@ export default function AddForm() {
     const handlecallContract = async (event : any) =>{
 
       event.preventDefault();
-      console.log(fname);
-      console.log(lname);
-      console.log(dipID);
-      console.log(school);
-      console.log(major);
-      console.log(gmonth);
-      console.log(gyear);
 
-      if (fname === "" || lname === "" || dipID === "" || school === "" || major === "" || gmonth ==="" || gyear === ""){
+      console.log(dipID);
+
+
+      if (dipID === ""){
         alert("Please correct the inputs");
       } else {
         
@@ -139,13 +131,7 @@ export default function AddForm() {
 
     
     <MDBInputGroup className='mb-3' textBefore='URI'>
-      <input className='form-control' placeholder='<>' type='text'  value={gmonth} onChange={(e) => {
-          try{
-            setMonth(e.target.value)
-          } catch(e){
-            console.log(e);
-          }
-        }}/>
+      <input className='form-control' placeholder='<>' type='text' />
     </MDBInputGroup>
 
 
