@@ -11,6 +11,12 @@
 # production
 /build
 
+
+# truffle files
+truffle/node_modules/
+truffle/package-lock.json
+truffle/package.json
+
 # misc
 .DS_Store
 .env.local

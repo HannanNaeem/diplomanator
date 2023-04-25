@@ -8,12 +8,13 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import  Verify  from "./pages/Verify";
 import Home from './pages/Home';
 import AddRecord from './pages/AddRecord';
+import BrowseBC from './pages/BrowseBC';
 
 
 function App() {
   
   // // Main Banner Image
-  // const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
+  // const contactAdd = "0x5966C914AD5EBA72A197d41cDEFe4F07FB93637B";
   // const mainBgImage = "https://www.commonapp.org/static/aed6289d277c112ece5a609eff45ae9c/university-texas-austin_1171.jpg";
   // const addRecImage = "https://wallpapercave.com/wp/wp2337008.jpg";
   // const verifyImage = "https://assets.teenvogue.com/photos/5e66a34f7ac2c30008a4819d/16:9/w_2560%2Cc_limit/GettyImages-1062799214.jpg";
@@ -127,36 +128,54 @@ function App() {
         <Route  path = "/" element={<Home/>}/>
         <Route  path = "/pages/Verify" element={<Verify/>}/>
         <Route  path = "/pages/AddRecord" element={<AddRecord/>}/>
+        <Route  path = "/pages/BrowseBC" element={<BrowseBC/>}/>
       </Routes>
     </BrowserRouter>
     </>
 
-    // <div className="App">
+  //   // <div className="App">
 
-    //   {/* MAIN BANNER */}
-    //   <div className="main-card-wrapper" style={{ backgroundImage: `url(${mainBgImage})` }}>
-    //     <div className="main-card__inner-wrapper">
-    //       <h1 className="header-txt">Diplomanator Beta</h1>
-    //       {(isActive) ? 
-    //         <button type ="button" disabled={minting} onClick={mint} className = "main-mint-btn">
-    //           {(minting) ? `Waiting for confirmation..` : `Mint DipTok`}
-    //         </button>
-    //         : <button className="main-mint-btn" onClick={connect} >Connect to Wallet to Mint DipTok</button>
-    //       }
-    //       {(isActive && !minting) ? 
-    //          <button type="button" onClick={disconnect} className="main-discon-btn">Disconnect </button>
-    //         : <div></div>
-    //       }
-    //       {(isActive && !minting) ? 
-    //         <div className = "account-wrapper">
-    //           Account: {account} 
-    //          </div>
-    //         : <div></div>
-    //       }
+  //     {/* MAIN BANNER */}
+  //     <div className="main-card-wrapper" style={{ backgroundImage: `url(${mainBgImage})` }}>
+  //       <div className="main-card__inner-wrapper">
+  //         <h1 className="header-txt">Diplomanator Beta</h1>
+  //         {(isActive) ? 
+  //           <button type ="button" disabled={minting} onClick={mint} className = "main-mint-btn">
+  //             {(minting) ? `Waiting for confirmation..` : `Mint DipTok`}
+  //           </button>
+  //           : <button className="main-mint-btn" onClick={connect} >Connect to Wallet to Mint DipTok</button>
+  //         }
+  //         {(isActive && !minting) ? 
+  //            <button type="button" onClick={disconnect} className="main-discon-btn">Disconnect </button>
+  //           : <div></div>
+  //         }
+  //         {(isActive && !minting) ? 
+  //            <button type="button" onClick={() => {}} className="addr-btn"> {account} </button>
+  //           : <div></div>
+  //         }
+         
+  //        {(isActive) ?
+  //           <button type ="button" onClick={ToggleEventViewer} className = "main-mint-btn">
+  //             {(showEvents) ? `Hide Events` : `Show Events`}
+  //           </button>
+  //           :
+  //           <div></div>
+  //        }
+
+  //        {
+  //         <div className="event-viewer">
+  //           <h3>Events</h3>
+  //           <ul>
+  //             {dipTokEvent.reverse().map((event, index) => {
+  //               return <li key={index}>{event}</li>
+  //             })}
+  //           </ul>
+  //         </div>        
+  //     }
           
           
-    //     </div>
-    //   </div>
+  //   //     </div>
+  //   //   </div>
 
     //     <button onClick={() =>{}} className="function-card-wrapper" style={{ backgroundImage: `url(${verifyImage})` }}>
     //       <div className="function-card__inner-wrapper">
