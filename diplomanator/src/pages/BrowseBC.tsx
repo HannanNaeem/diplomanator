@@ -4,7 +4,7 @@ import web3 from 'web3';
 import abi from '../contract_abis/MyToken.json'
 import *  as ReactBootStrap from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
 
 const BrowseBC = () => {
 
@@ -53,6 +53,23 @@ const [recordAdded, setRecordAdded] = useState([]);
       <Card.Body>
         <Card.Title>Browse Verified Diploma Events</Card.Title>
         <Button variant="primary" onClick={showEvents}>View BlockChain Events</Button>
+
+
+        <FloatingLabel
+        controlId="floatingTextarea"
+        label="Comments"
+        className="mb-3"
+      >
+        <Form.Control as="textarea" placeholder="Leave a comment here" />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingTextarea2" label="Comments">
+        <Form.Control
+          as="textarea"
+          placeholder="Leave a comment here"
+          style={{ height: '100px' }}
+        />
+      </FloatingLabel>
+
       </Card.Body>
     
 
@@ -66,7 +83,7 @@ const [recordAdded, setRecordAdded] = useState([]);
         </tr>
       </thead>
       <tbody>
-        {recordEdit.map(renderRecordEdit)} 
+        {recordAdded.map(renderRecordEdit)} 
       </tbody>
     </ReactBootStrap.Table>
     </Card>
