@@ -10,7 +10,7 @@ import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
 
 const BrowseBC = () => {
 
-const contractAdd = "0x01ADF9161b1Aa013374A61e07d9dacdFEFeEb9d2";
+const contractAdd = "0x7626BCE28773EAdb53328029D0D1Ba2f10A31dc3";
 const [record, setRecord] = useState<any>([]);
 const [myAccount , setMyAccount] = useState("");
 
