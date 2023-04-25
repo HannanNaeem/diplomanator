@@ -6,6 +6,7 @@ import abi from '../contract_abis/RecordAdder.json'
 import *  as ReactBootStrap from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
+import "../App.css"
 
 
 const BrowseBC = () => {
@@ -76,8 +77,9 @@ const recordAddedEvent = async () => {
 
 
   return(
+    <div className="events-table">
     <Card>
-      <Card.Header>Diploma Records</Card.Header>
+      <Card.Header><div className="eventsHead-txt">Diploma Records</div></Card.Header>
       <Card.Body>
         <Card.Title>Browse Verified Diploma Events</Card.Title>
         <Button variant="primary" onClick={showEvents}>View BlockChain Events</Button>
@@ -99,6 +101,7 @@ const recordAddedEvent = async () => {
       </tbody>
     </ReactBootStrap.Table>
     </Card>
+    </div>
   );
 
 
