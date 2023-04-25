@@ -10,14 +10,36 @@ import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
 
 const BrowseBC = () => {
 
-const contractAdd = "0xb8401841Dc81a8Bb25D35F6F5C153cC1C802b8e0";
-const {active, account, library, activate, deactivate} = useWeb3React()
+const contractAdd = "0x01ADF9161b1Aa013374A61e07d9dacdFEFeEb9d2";
 const [record, setRecord] = useState<any>([]);
+const [myAccount , setMyAccount] = useState("");
 
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+
+const connect = async (event : any) => {
+  event.preventDefault();
+  try {
+    if(window.ethereum){
+      console.log("MetaMast detected");
+      window.ethereum.request({method: 'eth_requestAccounts'}).then(
+        (res : any) => {
+          console.log(res);
+          setMyAccount(res);
+        }
+      );
+    } else {
+      alert("Install metamask extension");
+      return;
+    }
+  } catch (ex) {
+    console.log(ex);
+  }
+}
  // Function for event listener for Verification events containing diploma ID and URI
 const recordAddedEvent = async () => {
-    const contract = new library.eth.Contract(abi['abi'], contractAdd, {
-      from: account, // default from address
+    const contract = new web3.eth.Contract(abi['abi'], contractAdd, {
+      from: myAccount[0], // default from address
     });
 
     await contract.getPastEvents(
@@ -59,22 +81,7 @@ const recordAddedEvent = async () => {
       <Card.Body>
         <Card.Title>Browse Verified Diploma Events</Card.Title>
         <Button variant="primary" onClick={showEvents}>View BlockChain Events</Button>
-
-
-        <FloatingLabel
-        controlId="floatingTextarea"
-        label="Comments"
-        className="mb-3"
-      >
-        <Form.Control as="textarea" placeholder="Leave a comment here" />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingTextarea2" label="Comments">
-        <Form.Control
-          as="textarea"
-          placeholder="Leave a comment here"
-          style={{ height: '100px' }}
-        />
-      </FloatingLabel>
+        <Button variant="primary" onClick={connect}>Get current account</Button>
 
       </Card.Body>
     

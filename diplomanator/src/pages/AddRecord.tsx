@@ -1,9 +1,13 @@
 import React from "react";
+import AddForm from "../components/AddForm";
   
 const AddRecord = () => {
   return (
-    <div>
-      <h1>Add record Page</h1>
+    <div className="form_wrapper">
+    <div className="pageHead-txt">
+      Add Record
+      </div>
+      <AddForm/>
     </div>
   );
 };
