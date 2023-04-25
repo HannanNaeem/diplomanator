@@ -9,7 +9,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 function App() {
   
   // Main Banner Image
-  const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
+  const contactAdd = "0x5966C914AD5EBA72A197d41cDEFe4F07FB93637B";
   const mainBgImage = "https://cdn.i-scmp.com/sites/default/files/styles/1200x800/public/d8/images/canvas/2021/12/03/b37a97d3-270c-4cdc-8c83-4ee735a686e8_95895212.jpg?itok=y0459xhc&v=1638533154";
   const [provider, setProvider] = useState();
 
@@ -18,6 +18,58 @@ function App() {
   const [myAccount , setMyAccount] = useState("");
   const [isActive, setActive] = useState(false);
   const [minting, setMinting] = useState(false);
+  const [dipTokEvent, setDipTokEvent] = useState([]);
+  const [showEvents, setsShowEvents] = useState(true);
+
+  // state hook for storing verifiying diploma events
+  const [recordEdit, setRecordEdit] = useState([]);
+
+
+  const ToggleEventViewer = () => {
+    setsShowEvents(!showEvents);
+  }
+
+  // Function to listen to events emitted by the contract
+  const sentTokenEvent = async () => {
+
+    const contract = new library.eth.Contract(abi['abi'], contactAdd, {
+      from: account, // default from address
+    });
+
+    await contract.getPastEvents(
+      'sentTokens',
+      {
+        fromBlock: 0,
+        toBlock: 'latest'
+      },
+      (error: Error, events) => {
+        // create an array with only field of return values from events
+        events.forEach((event) => {
+          setDipTokEvent((dipTokEvent) => [...dipTokEvent, event.returnValues.to]);
+        });
+      });
+  }
+
+  // Function for event listener for Verification events containing diploma ID and URI
+  const recordEditEvent = async () => {
+    const contract = new library.eth.Contract(abi['abi'], contractAdd, {
+      from, account, // default from address
+    });
+
+    await contract.getPastEvents(
+      'recordEdit',
+      {
+        fromBlock: 0,
+        toBlock: 'latest'
+      },
+      (error: Error, events) => {
+        // create array with field DipID and URI
+        events.forEach((event) => {
+          setRecordEdit((recordEdit) => [...recordEdit, {event.returnValues.DipID, event.returnValues.URI}]));
+        });
+      }
+    );
+  }
 
   // Function to connect to wallet. We will use wallet to initiate transactions from the user
   async function connect() {
@@ -56,6 +108,9 @@ function App() {
     })
     .then(async (txHash: any) => {
       console.log(txHash);
+      sentTokenEvent();
+      console.log('Logged events into array');
+      console.log()
       // var contract = new library.eth.Contract(abi['abi'], contactAdd, {
       //   from: account, // default from address
       // });
@@ -102,6 +157,8 @@ function App() {
 
     await sendEthsAndMint();
 
+    console.log("Transaction sent!")
+
     setMinting(false);
   }
 
@@ -128,6 +185,25 @@ function App() {
              <button type="button" onClick={() => {}} className="addr-btn"> {account} </button>
             : <div></div>
           }
+         
+         {(isActive) ?
+            <button type ="button" onClick={ToggleEventViewer} className = "main-mint-btn">
+              {(showEvents) ? `Hide Events` : `Show Events`}
+            </button>
+            :
+            <div></div>
+         }
+
+         {
+          <div className="event-viewer">
+            <h3>Events</h3>
+            <ul>
+              {dipTokEvent.reverse().map((event, index) => {
+                return <li key={index}>{event}</li>
+              })}
+            </ul>
+          </div>        
+      }
           
           
         </div>
