@@ -42,13 +42,17 @@ const [recordEdit, setRecordEdit] = useState([]);
     )
   }
 
+  const showEvents = () => {
+    recordEditEvent();
+  }
+
 
   return(
     <Card>
       <Card.Header>Diploma Records</Card.Header>
       <Card.Body>
         <Card.Title>Browse Verified Diploma Events</Card.Title>
-        {/* <Button variant="primary">Go somewhere</Button> */}
+        <Button variant="primary" onClick={showEvents}>View BlockChain Events</Button>
       </Card.Body>
     
 
