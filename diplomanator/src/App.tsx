@@ -130,49 +130,49 @@ function App() {
     </BrowserRouter>
     </>
 
-    // <div className="App">
+  //   // <div className="App">
 
-      {/* MAIN BANNER */}
-      <div className="main-card-wrapper" style={{ backgroundImage: `url(${mainBgImage})` }}>
-        <div className="main-card__inner-wrapper">
-          <h1 className="header-txt">Diplomanator Beta</h1>
-          {(isActive) ? 
-            <button type ="button" disabled={minting} onClick={mint} className = "main-mint-btn">
-              {(minting) ? `Waiting for confirmation..` : `Mint DipTok`}
-            </button>
-            : <button className="main-mint-btn" onClick={connect} >Connect to Wallet to Mint DipTok</button>
-          }
-          {(isActive && !minting) ? 
-             <button type="button" onClick={disconnect} className="main-discon-btn">Disconnect </button>
-            : <div></div>
-          }
-          {(isActive && !minting) ? 
-             <button type="button" onClick={() => {}} className="addr-btn"> {account} </button>
-            : <div></div>
-          }
+  //     {/* MAIN BANNER */}
+  //     <div className="main-card-wrapper" style={{ backgroundImage: `url(${mainBgImage})` }}>
+  //       <div className="main-card__inner-wrapper">
+  //         <h1 className="header-txt">Diplomanator Beta</h1>
+  //         {(isActive) ? 
+  //           <button type ="button" disabled={minting} onClick={mint} className = "main-mint-btn">
+  //             {(minting) ? `Waiting for confirmation..` : `Mint DipTok`}
+  //           </button>
+  //           : <button className="main-mint-btn" onClick={connect} >Connect to Wallet to Mint DipTok</button>
+  //         }
+  //         {(isActive && !minting) ? 
+  //            <button type="button" onClick={disconnect} className="main-discon-btn">Disconnect </button>
+  //           : <div></div>
+  //         }
+  //         {(isActive && !minting) ? 
+  //            <button type="button" onClick={() => {}} className="addr-btn"> {account} </button>
+  //           : <div></div>
+  //         }
          
-         {(isActive) ?
-            <button type ="button" onClick={ToggleEventViewer} className = "main-mint-btn">
-              {(showEvents) ? `Hide Events` : `Show Events`}
-            </button>
-            :
-            <div></div>
-         }
+  //        {(isActive) ?
+  //           <button type ="button" onClick={ToggleEventViewer} className = "main-mint-btn">
+  //             {(showEvents) ? `Hide Events` : `Show Events`}
+  //           </button>
+  //           :
+  //           <div></div>
+  //        }
 
-         {
-          <div className="event-viewer">
-            <h3>Events</h3>
-            <ul>
-              {dipTokEvent.reverse().map((event, index) => {
-                return <li key={index}>{event}</li>
-              })}
-            </ul>
-          </div>        
-      }
+  //        {
+  //         <div className="event-viewer">
+  //           <h3>Events</h3>
+  //           <ul>
+  //             {dipTokEvent.reverse().map((event, index) => {
+  //               return <li key={index}>{event}</li>
+  //             })}
+  //           </ul>
+  //         </div>        
+  //     }
           
           
-    //     </div>
-    //   </div>
+  //   //     </div>
+  //   //   </div>
 
     //     <button onClick={() =>{}} className="function-card-wrapper" style={{ backgroundImage: `url(${verifyImage})` }}>
     //       <div className="function-card__inner-wrapper">
