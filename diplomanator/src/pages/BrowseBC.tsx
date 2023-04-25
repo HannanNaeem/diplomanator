@@ -1,10 +1,12 @@
 import { useWeb3React } from "@web3-react/core";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from "react";
 import web3 from 'web3';
 import abi from '../contract_abis/MyToken.json'
 import *  as ReactBootStrap from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
+
 
 const BrowseBC = () => {
 

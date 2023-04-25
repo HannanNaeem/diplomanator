@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import AddRecord from './pages/AddRecord';
 import BrowseBC from './pages/BrowseBC';
 
+
 function App() {
   
   // // Main Banner Image
