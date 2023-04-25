@@ -43,7 +43,7 @@ const recordAddedEvent = async () => {
     });
 
     await contract.getPastEvents(
-      'recordAdded',
+      "recordAdded",
       {
         fromBlock: 0,
         toBlock: 'latest'

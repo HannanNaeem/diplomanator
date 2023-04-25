@@ -32,7 +32,7 @@ export default function Form() {
     const [hash, setHash] = useState("");
 
 
-    const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
+    const contactAdd = "0xa3EB4D4888d18B318E859D6b733dF5D57fA5d3df";
     const Web3 = require('web3');
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
     
