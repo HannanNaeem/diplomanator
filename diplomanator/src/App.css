@@ -16,7 +16,7 @@
 }
 
 .main-card-wrapper {
-  min-height: 500px;
+  min-height: 550px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -24,14 +24,50 @@
 }
 .main-card__inner-wrapper {
   flex-flow: column;
-  background: linear-gradient(90deg, wheat 0%, #f5deb3cc 50%, #f5deb300 100%);
+  background: linear-gradient(90deg, rgb(248, 242, 230) 0%, #f5deb3cc 50%, #f5deb300 100%);
   width: 100%;
   padding: 100px 5vw;
 }
 
-.header-txt {
-  color: #404040;
+
+.function-card-wrapper,
+.function-card__inner-wrapper {
+  box-sizing: border-box;
+  border-radius: 10px;
+
+}
+
+.function-card-wrapper {
+  min-height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-right: 20px;
+
+}
+.function-card__inner-wrapper {
+  background: linear-gradient(90deg, rgb(247, 196, 137) 0%, #f7a73dcc 50%, #f5deb300 100%);
+  width:fit-content;
+  padding: 100px;
+  
+}
+.function-txt {
+  color: #ffffff;
   font-size: 4em;
+  min-width: 320px;
+  max-width: 350px;
+  line-height: 1em;
+  margin: 0px;
+}
+
+
+
+.header-txt {
+  color: #a28054;
+  font-size: 4em;
+
   max-width: 350px;
   line-height: 1em;
   margin: 0px;
@@ -40,7 +76,22 @@
 
 /* MAIN CARDS WRAPPER END */
 
-
+.account-wrapper {
+  min-height: 10px;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background:#b85600;
+  width:fit-content;
+  border-radius: 10px;
+  margin-top: 2vh;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 10px;
+  font-weight:100;
+  line-height: 2em;
+  
+}
 
 /* CARDS SECTION START */
 .cards-wrapper {
@@ -81,7 +132,7 @@
   font-weight: bold;
   margin-top: 20px;
   max-width: 350px;
-  background-color: #82b8ca;
+  background-color: #fcca79;
 }
 
 .main-discon-btn {
@@ -93,7 +144,8 @@
   font-weight: bold;
   margin-top: 20px;
   max-width: 350px;
-  background-color: #82b8ca;
+  color: #ffff;
+  background-color: #803f21;
 }
 
 .main-mint-btn:disabled,
@@ -109,7 +161,7 @@
 }
 .main-mint-btn:hover,
 .sm-mint-button:hover {
-  background-color: #a2e5f4;
+  background-color: #c4b68a;
   font-weight: bold;
 }
 
