@@ -1,0 +1,21 @@
+{ "db" :{
+        "0001":{
+            "URI":"defaultURI",
+            "fname": "hannan",
+            "lname": "naeem",
+            "school": "eng",
+            "major": "ece",
+            "month": "05",
+            "year":"2024"
+        },
+        "0002":{
+            "URI":"https://github.com",
+            "fname": "muhammad",
+            "lname": "muaz",
+            "school": "cns",
+            "major": "cs",
+            "month": "05",
+            "year":"2026"
+        }
+    }
+}

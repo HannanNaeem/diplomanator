@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Form.css';
+import '../App.css';
 import { useWeb3React } from "@web3-react/core";
 import '@coreui/coreui/dist/css/coreui.min.css'
 import abi from "../contract_abis/MyToken.json"
 import web3 from 'web3';
+import db from "../dataBase/dips.json" ;
+import {useNavigate} from "react-router-dom";
 import {
   MDBRow,
   MDBCol,
@@ -12,6 +15,7 @@ import {
   MDBBtn,
   MDBInputGroup
 } from 'mdb-react-ui-kit';
+import Card from 'react-bootstrap/Card';
 
 export default function Form() {
 
@@ -24,11 +28,29 @@ export default function Form() {
     const [gyear, setYear] = useState("");
     const {active, account, library, activate, deactivate} = useWeb3React()
     const [myAccount , setMyAccount] = useState("");
+    const [matched, setMatched] = useState(false);
+    const [hash, setHash] = useState("");
+
 
     const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
     const Web3 = require('web3');
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
     
+    async function sha256(message: any) {
+      // encode as UTF-8
+      const msgBuffer = new TextEncoder().encode(message);                    
+  
+      // hash the message
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  
+      // convert ArrayBuffer to Array
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+  
+      // convert bytes to hex string                  
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      return hashHex;
+    }
+
     const connect = async (event : any) => {
       event.preventDefault();
       try {
@@ -55,9 +77,46 @@ export default function Form() {
       } else {
         console.log("No Account");
       }
-    }, [myAccount]);
+      if (hash){
+        console.log("Hash present");
+      }
+    }, [myAccount, hash]);
+    const navigate = useNavigate();
 
-    
+    async function verifyDiploma(){
+      
+      var this_key = 0;
+      var t_key = ""
+      for (t_key in db["db"]){
+        if(dipID === t_key){
+          break;
+        }
+        this_key = this_key + 1;
+      }
+
+      if(this_key >= Object.keys(db["db"]).length){
+        alert("Diploma does not exist");
+        navigate("/");
+      } else {
+        var key = dipID;
+        const keyTyped = (key as keyof typeof db["db"]);
+        var db_string  = "";
+        db_string = db_string.concat(db["db"][keyTyped].fname, db["db"][keyTyped].lname, db["db"][keyTyped].school, db["db"][keyTyped].major, db["db"][keyTyped].month, db["db"][keyTyped].year);
+        var hash_db = await sha256(db_string);
+        console.log(hash_db)
+        var input_string = "";
+        var input_string = input_string.concat(fname.toLowerCase(), lname.toLowerCase(), school.toLowerCase(), major.toLowerCase(), gmonth, gyear);
+        var hash_in = await sha256(input_string);
+        setHash(hash_in)
+
+        if (hash_in === hash_db){
+          setMatched(true)
+        }
+      }
+    }
+
+
+
     async function sendDIPTOKS() {
       
 
@@ -76,12 +135,19 @@ export default function Form() {
           console.log(e);
         } else {
           console.log(tx);
+          // transaction was successful
+          await verifyDiploma();
         }
       });
+
+
+
     }
 
 
     const handleValidate = async (event : any) =>{
+      setMatched(false);
+      setHash("");
       event.preventDefault();
       console.log(fname);
       console.log(lname);
@@ -153,10 +219,10 @@ export default function Form() {
         }}
       >
         <option value="">Choose School ⏬</option>
-          <option value="ENG">Cockrell School of Engineering</option>
-          <option value="GBS">Graduate School of Business</option>
-          <option value="SIS">School of Information Sciences</option>
-          <option value="CNS">College of Natural Sciences</option>
+          <option value="eng">Cockrell School of Engineering</option>
+          <option value="gbs">Graduate School of Business</option>
+          <option value="sis">School of Information Sciences</option>
+          <option value="cns">College of Natural Sciences</option>
       </select>      
       <span className='input-group-text'> Major </span>
       
@@ -170,10 +236,10 @@ export default function Form() {
         }}
       >
           <option value="">Choose Major ⏬</option>
-          <option value="ECE">Software Engineering</option>
-          <option value="ECO">Economics</option>
-          <option value="CS">Computer Science</option>
-          <option value="MATH">Mathematics</option>
+          <option value="ece">Software Engineering</option>
+          <option value="eco">Economics</option>
+          <option value="cs">Computer Science</option>
+          <option value="math">Mathematics</option>
       </select>
     </MDBInputGroup>
 
@@ -203,6 +269,32 @@ export default function Form() {
         Connect Wallet
       </MDBBtn>
     </form>
+
+
+    <div >
+      {(!matched && hash != "") ?
+      <div>
+        <div className='nomatch-txt'>
+          No Match   (-1 DTK)
+        </div>
+      </div>
+      : 
+      <div>
+
+      </div>
+      }
+      {(matched) ? <div>
+        <div className='match-txt'>
+          MATCH   (-1 DTK)
+        </div>
+          <div className='match-card'> 
+            <Card>
+              <Card.Body> {hash} </Card.Body>
+            </Card>
+          </div>
+        </div>
+        : <div></div>}
+    </div>
   </div>
   );
 }

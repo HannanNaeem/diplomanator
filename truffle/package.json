@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "@openzeppelin/contracts": "^4.8.3"
+    "@openzeppelin/contracts": "^4.8.3",
+    "bootstrap": "^5.2.3",
+    "i": "^0.3.7",
+    "npm": "^9.6.5",
+    "react-bootstrap": "^2.7.4",
+    "reactstrap": "^9.1.9"
+  },
+  "devDependencies": {
+    "@types/react-bootstrap": "^0.32.32"
   }
 }

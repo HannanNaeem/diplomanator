@@ -62,6 +62,36 @@
   margin: 0px;
 }
 
+.match-txt {
+  color: #00b91f;
+  font-size: 2em;
+  min-width: 320px;
+  max-width: 350px;
+  line-height: 1em;
+  margin-top: 20px;
+  background-color: #dcdcdc3f;
+  background-position: center;
+  width:fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 50px;
+}
+
+.nomatch-txt {
+  color: #ff4800;
+  font-size: 2em;
+  min-width: 320px;
+  max-width: 350px;
+  line-height: 1em;
+  margin-top: 20px;
+  background-color: #dcdcdc3f;
+  background-position: center;
+  width:fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 50px;
+}
+
 
 .pageHead-txt{
   color: #000000;
@@ -165,6 +195,11 @@
   max-width: 350px;
   color: #ffff;
   background-color: #803f21;
+}
+
+.match-card{
+  background-color: #cacaca;
+  margin-top: 40px;
 }
 
 .main-mint-btn:disabled,
