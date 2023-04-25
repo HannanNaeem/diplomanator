@@ -1,16 +1,18 @@
 import './App.css';
 import { useWeb3React } from "@web3-react/core";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import web3 from 'web3';
 import { injected } from "./wallet/Connect";
 import abi from './contract_abis/MyToken.json'
-import detectEthereumProvider from '@metamask/detect-provider';
+
 
 function App() {
   
   // Main Banner Image
   const contactAdd = "0xc4AC7f01B462f302D15f4c7eB1b13E83f9c8493b";
-  const mainBgImage = "https://cdn.i-scmp.com/sites/default/files/styles/1200x800/public/d8/images/canvas/2021/12/03/b37a97d3-270c-4cdc-8c83-4ee735a686e8_95895212.jpg?itok=y0459xhc&v=1638533154";
+  const mainBgImage = "https://www.commonapp.org/static/aed6289d277c112ece5a609eff45ae9c/university-texas-austin_1171.jpg";
+  const addRecImage = "https://wallpapercave.com/wp/wp2337008.jpg";
+  const verifyImage = "https://assets.teenvogue.com/photos/5e66a34f7ac2c30008a4819d/16:9/w_2560%2Cc_limit/GettyImages-1062799214.jpg";
   const [provider, setProvider] = useState();
 
   // this is used to interface with block-chain directly e.g call method in a contract
@@ -18,6 +20,15 @@ function App() {
   const [myAccount , setMyAccount] = useState("");
   const [isActive, setActive] = useState(false);
   const [minting, setMinting] = useState(false);
+
+  useEffect(()=>{
+    if (minting){
+      console.log("Minting now");
+    } else {
+      console.log("Not minting now");
+    }
+  }, [minting]);
+
 
   // Function to connect to wallet. We will use wallet to initiate transactions from the user
   async function connect() {
@@ -56,6 +67,12 @@ function App() {
     })
     .then(async (txHash: any) => {
       console.log(txHash);
+
+      // let obj = {
+      //   to : contactAdd,
+      //   from: myAccount,
+      //   value: library.utils.toWei("1", "ether"),
+      // };
       // var contract = new library.eth.Contract(abi['abi'], contactAdd, {
       //   from: account, // default from address
       // });
@@ -70,9 +87,10 @@ function App() {
 
 
       // });
+      setMinting(false);
 
     })
-    .catch((error: any) => console.error(error));
+    .catch((error: any) => {console.error(error); setMinting(false);});
   }
 
   async function disconnect() {
@@ -87,22 +105,13 @@ function App() {
 
   // minting toggle listener
   // const [minting, setMinting] = useState(false);
-
- 
   
   async function mint(){
     
     setMinting(true);
 
-    let obj = {
-      to : contactAdd,
-      from: myAccount,
-      value: library.utils.toWei("1", "ether"),
-    };
-
     await sendEthsAndMint();
 
-    setMinting(false);
   }
 
  
@@ -125,13 +134,29 @@ function App() {
             : <div></div>
           }
           {(isActive && !minting) ? 
-             <button type="button" onClick={() => {}} className="addr-btn"> {account} </button>
+            <div className = "account-wrapper">
+              Account: {account} 
+             </div>
             : <div></div>
           }
           
           
         </div>
       </div>
+
+      <button className="function-card-wrapper" style={{ backgroundImage: `url(${verifyImage})` }}>
+        <div className="function-card__inner-wrapper">
+          <h1 className="function-txt"> Verify ✅</h1>
+
+        </div>
+      </button>
+
+      <button className="function-card-wrapper" style={{ backgroundImage: `url(${addRecImage})` }}>
+        <div className="function-card__inner-wrapper">
+          <h1 className="function-txt"> Add records</h1>
+
+        </div>
+      </button>
 
     </div>
  
