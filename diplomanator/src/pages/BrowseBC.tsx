@@ -2,7 +2,7 @@ import { useWeb3React } from "@web3-react/core";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from "react";
 import web3 from 'web3';
-import abi from '../contract_abis/MyToken.json'
+import abi from '../contract_abis/RecordAdder.json'
 import *  as ReactBootStrap from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Button, Form, FloatingLabel} from 'react-bootstrap';
@@ -48,18 +48,18 @@ const recordAddedEvent = async () => {
         fromBlock: 0,
         toBlock: 'latest'
       },
-      (error: Error, events:any) => {
-        // create array with field DipID and URI
+      function(error: any, events : any){ console.log(events); })
+      .then(function(events : any){
         events.forEach((event:any) => {
           let data = {
-            DipID: event.returnValues.DipID,
-            URI: event.returnValues.URI.toString()
+            DipID: event.returnValues.URI,
+            URI: event.returnValues.DipID
           }
-          setRecord((record:any) => [...record, data]);
+        setRecord((record:any) => [...record, data]); // same results as the optional callback above
         });
-      }
-    );
-  };
+      });
+
+    };
 
   const renderRecordEdit = (record:any, index:any) => {
     return(
@@ -90,9 +90,8 @@ const recordAddedEvent = async () => {
     <ReactBootStrap.Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Diploma ID</th>
           <th>URI</th>
+          <th>Diploma ID (encoded)</th>
         </tr>
       </thead>
       <tbody>
