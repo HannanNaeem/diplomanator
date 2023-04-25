@@ -10,10 +10,10 @@ const BrowseBC = () => {
 
 const contractAdd = "0xb8401841Dc81a8Bb25D35F6F5C153cC1C802b8e0";
 const {active, account, library, activate, deactivate} = useWeb3React()
-const [recordAdded, setRecordAdded] = useState([]);
+const [record, setRecord] = useState<any>([]);
 
  // Function for event listener for Verification events containing diploma ID and URI
- const recordAddedEvent = async () => {
+const recordAddedEvent = async () => {
     const contract = new library.eth.Contract(abi['abi'], contractAdd, {
       from: account, // default from address
     });
@@ -24,16 +24,20 @@ const [recordAdded, setRecordAdded] = useState([]);
         fromBlock: 0,
         toBlock: 'latest'
       },
-      (error: Error, events) => {
+      (error: Error, events:any) => {
         // create array with field DipID and URI
-        events.forEach((event) => {
-          setRecordAdded((recordAdded) => [...recordAdded, [event.returnValues.DipID, event.returnValues.URI]]);
+        events.forEach((event:any) => {
+          let data = {
+            DipID: event.returnValues.DipID,
+            URI: event.returnValues.URI.toString()
+          }
+          setRecord((record:any) => [...record, data]);
         });
       }
     );
   };
 
-  const renderRecordEdit = (record, index) => {
+  const renderRecordEdit = (record:any, index:any) => {
     return(
       <tr>
         <td>{record.DipID}</td>
@@ -83,7 +87,7 @@ const [recordAdded, setRecordAdded] = useState([]);
         </tr>
       </thead>
       <tbody>
-        {recordAdded.map(renderRecordEdit)} 
+        {record.map(renderRecordEdit)} 
       </tbody>
     </ReactBootStrap.Table>
     </Card>
