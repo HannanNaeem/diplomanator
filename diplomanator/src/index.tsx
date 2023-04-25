@@ -16,6 +16,13 @@ function getLibrary(provider: any) {
   return new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 }
 
+
+declare global {
+  interface Window {
+    ethereum: any
+  }
+}
+
 root.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}> 

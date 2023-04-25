@@ -113,4 +113,15 @@
   font-weight: bold;
 }
 
+.addr-btn {
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 7px 30px;
+  border: 2px solid #404040;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  max-width: 700px;
+  background-color: #82b8ca;
+}
 /* BUTTONS END */
