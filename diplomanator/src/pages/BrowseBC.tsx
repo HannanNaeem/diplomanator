@@ -10,16 +10,16 @@ const BrowseBC = () => {
 
 const contractAdd = "0xb8401841Dc81a8Bb25D35F6F5C153cC1C802b8e0";
 const {active, account, library, activate, deactivate} = useWeb3React()
-const [recordEdit, setRecordEdit] = useState([]);
+const [recordAdded, setRecordAdded] = useState([]);
 
  // Function for event listener for Verification events containing diploma ID and URI
- const recordEditEvent = async () => {
+ const recordAddedEvent = async () => {
     const contract = new library.eth.Contract(abi['abi'], contractAdd, {
       from: account, // default from address
     });
 
     await contract.getPastEvents(
-      'recordEdit',
+      'recordAdded',
       {
         fromBlock: 0,
         toBlock: 'latest'
@@ -27,7 +27,7 @@ const [recordEdit, setRecordEdit] = useState([]);
       (error: Error, events) => {
         // create array with field DipID and URI
         events.forEach((event) => {
-          setRecordEdit((recordEdit) => [...recordEdit, [event.returnValues.DipID, event.returnValues.URI]]);
+          setRecordAdded((recordAdded) => [...recordAdded, [event.returnValues.DipID, event.returnValues.URI]]);
         });
       }
     );
@@ -43,7 +43,7 @@ const [recordEdit, setRecordEdit] = useState([]);
   }
 
   const showEvents = () => {
-    recordEditEvent();
+    recordAddedEvent();
   }
 
 

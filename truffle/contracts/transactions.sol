@@ -13,8 +13,8 @@ contract RecordAdder is Ownable {
     }
 
     event recordAdded(
-        string indexed dipID, 
-        uint ptr
+        string indexed DipID, 
+        uint256 URI
     );
 
     function addRecord(string memory dipID) public onlyOwner{
