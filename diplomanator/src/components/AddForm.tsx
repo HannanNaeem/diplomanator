@@ -25,7 +25,7 @@ export default function AddForm() {
     const [hash, setHash] = useState("");
 
 
-    const contactAdd = "0x01ADF9161b1Aa013374A61e07d9dacdFEFeEb9d2";
+    const contactAdd = "0x1A89d806032e27B33137581f24b64E19aa7B1e98";
     const Web3 = require('web3');
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
     

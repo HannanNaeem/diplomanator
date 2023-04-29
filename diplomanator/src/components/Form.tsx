@@ -32,7 +32,7 @@ export default function Form() {
     const [hash, setHash] = useState("");
 
 
-    const contactAdd = "0xa3EB4D4888d18B318E859D6b733dF5D57fA5d3df";
+    const contactAdd = "0x729E39564c766fab15a7445A1D482dAfD0a041a3";
     const Web3 = require('web3');
     const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
     
@@ -118,8 +118,6 @@ export default function Form() {
 
 
     async function sendDIPTOKS() {
-      
-
       if (myAccount === ""){
         alert("error connecting to wallet");
         return;
@@ -139,8 +137,6 @@ export default function Form() {
           await verifyDiploma();
         }
       });
-
-
 
     }
 

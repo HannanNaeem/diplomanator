@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 const Home =() => {
   
   // Main Banner Image
-  const contactAdd = "0xa3EB4D4888d18B318E859D6b733dF5D57fA5d3df";
+  const contactAdd = "0x729E39564c766fab15a7445A1D482dAfD0a041a3";
   const mainBgImage = "https://www.commonapp.org/static/aed6289d277c112ece5a609eff45ae9c/university-texas-austin_1171.jpg";
   const addRecImage = "https://wallpapercave.com/wp/wp2337008.jpg";
   const verifyImage = "https://assets.teenvogue.com/photos/5e66a34f7ac2c30008a4819d/16:9/w_2560%2Cc_limit/GettyImages-1062799214.jpg";
@@ -67,31 +67,12 @@ const Home =() => {
       params : [{
         from: account,
         to: contactAdd,
+        // exchaning with 1 eth for now. Tired of weis
         value: '0xDE0B6B3A7640000',
       },],
     })
     .then(async (txHash: any) => {
       console.log(txHash);
-
-      // let obj = {
-      //   to : contactAdd,
-      //   from: myAccount,
-      //   value: library.utils.toWei("1", "ether"),
-      // };
-      // var contract = new library.eth.Contract(abi['abi'], contactAdd, {
-      //   from: account, // default from address
-      // });
-      // await contract.methods.receivePayment().send(async (e : any, tx : any) => {
-      //   if (e) {
-      //     alert(`Something went wrong! Try switching accounts - ${e}`);
-      //     console.log("ERROR ->", e);
-      //   } else {
-      //     console.log(tx);
-      //   }
-      //   setMinting(false);
-
-
-      // });
       setMinting(false);
 
     })

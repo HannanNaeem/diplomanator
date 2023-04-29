@@ -23,6 +23,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
     }
 
     receive() external payable{
+        require(msg.value == 1 ether, "Incorrect amount");
         emit paymentReceived(msg.sender);
         _pendingMints.push(msg.sender);
         mint();
